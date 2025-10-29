@@ -1,28 +1,65 @@
-import { useState } from 'react'
+import React from 'react';
+import Hero3D from './components/Hero3D';
+import FeedList from './components/FeedList';
+import BottomNav from './components/BottomNav';
+
+const demoFeed = [
+  {
+    id: '1',
+    userName: 'Ava Chen',
+    title: 'Dune: Part Two',
+    type: 'movie',
+    score: 9,
+    time: '2h ago',
+    poster: 'https://image.tmdb.org/t/p/w185/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg',
+    comment: 'Staggering scale and sound. Villeneuve cooked. Hans Zimmer did it again.',
+    likes: 42,
+  },
+  {
+    id: '2',
+    userName: 'Leo Park',
+    title: 'The Bear — S2',
+    type: 'tv',
+    score: 8,
+    time: '5h ago',
+    poster: 'https://image.tmdb.org/t/p/w185/iHSwvRVsRyxpX7FE7GbviaDvgGZ.jpg',
+    comment: 'Episode 6 had me holding my breath. Remarkably tender writing.',
+    likes: 19,
+  },
+  {
+    id: '3',
+    userName: 'Maya Patel',
+    title: 'Past Lives',
+    type: 'movie',
+    score: 10,
+    time: '1d ago',
+    poster: 'https://image.tmdb.org/t/p/w185/kqYDoEb9PxLxm9JATsY2lA4lL2A.jpg',
+    comment: 'Quietly devastating. The final scene will stay with me.',
+    likes: 88,
+  },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
+    <div className="min-h-screen w-full bg-gradient-to-b from-slate-50 to-white text-gray-900">
+      <div className="mx-auto max-w-md pb-24">
+        {/* Hero with Spline */}
+        <Hero3D />
+
+        {/* Feed */}
+        <main className="-mt-6 space-y-4 px-4">
+          <div className="mx-auto mb-2 flex max-w-md items-center justify-between">
+            <h2 className="text-lg font-semibold">My Activity</h2>
+            <div className="text-sm text-gray-500">Friends & You</div>
+          </div>
+          <FeedList items={demoFeed} />
+        </main>
+
+        {/* Bottom navigation */}
+        <BottomNav />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
